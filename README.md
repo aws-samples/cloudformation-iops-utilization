@@ -18,6 +18,22 @@ CloudFormation template deploys a Lambda function. The function, once invoked, c
 ##  Installation instrutions
 Detailed instrutions can be found in the blog post.
 
+## Considerations and caveats:
+The script provided is not production ready and may need changes and
+enhancements based on your needs.
+* Cross-account Amazon EBS volumes: Function works cross-Region, but is
+not designed to work cross accounts. If your organization has multiple
+accounts, it will need to be refactored to support cross account capabilities
+* Lambda timeout: Lambda functions, currently, are restricted to run for 15
+minutes and may time out for an account with large number of volumes
+* Error handling: Function contains basic error handling and may need
+enhancements based on your needs
+* Performance: Performance can be improved mainly in the CSV file writing
+process
+* Incremental data capture/history tracking: Code can be refactored to
+write results incrementally to the CSV file and capture metrics on an ongoing
+basis
+
 ## Security
 
 See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
